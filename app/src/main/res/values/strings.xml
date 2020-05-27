@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Aplikasi Cuaca</string>
+    <string name="title_activity_location_list">Cari Lokasi</string>
+    <string name="title_activity_main_activity">Aplikasi Cuaca</string>
+    <string name="list_kosong">Tekan tombol + untuk menambahkan lokasi</string>
+    <string name="list_kota">Kota: </string>
+    <string name="list_negara">Negara: </string>
+    <string name="api_key">1a1d0fc149ee41cf1fdaefd65a28d1eb</string>
+    <string name="search_kosong">Silahkan cari lokasi</string>
+    <string name="wait">Silahkan tunggu</string>
+
+
+
+</resources>
