@@ -8,6 +8,7 @@
     <string name="api_key">1a1d0fc149ee41cf1fdaefd65a28d1eb</string>
     <string name="search_kosong">Silahkan cari lokasi</string>
     <string name="wait">Silahkan tunggu</string>
+    <string name="lokasi_notfound">Lokasi tidak ditemukan!</string>
 
 
 

@@ -35,6 +35,8 @@ public class CuacaActivity extends AppCompatActivity {
 
     OkHttpClient client = new OkHttpClient();
 
+    Locale loc;
+
 
     TextView addressTxt, updated_atTxt, statusTxt, tempTxt, temp_minTxt, temp_maxTxt, sunriseTxt,
             sunsetTxt, windTxt, pressureTxt, humidityTxt;
@@ -111,8 +113,11 @@ public class CuacaActivity extends AppCompatActivity {
                 Long sunset = sys.getLong("sunset");
                 String windSpeed = wind.getString("speed");
                 String weatherDescription = weather.getString("description");
+                String countryCode = sys.getString("country");
+                loc = new Locale("",countryCode);
+                String countryName = loc.getDisplayCountry();
 
-                String address = jsonObj.getString("name") + ", " + sys.getString("country");
+                String address = jsonObj.getString("name") + ", " + countryName;
 
                 //nge set setiap view nya sesuai data yang udah di parse
                 addressTxt.setText(address);

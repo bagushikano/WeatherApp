@@ -19,6 +19,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,10 +35,9 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class LocationInput extends AppCompatActivity {
-    EditText qSearch; // untuk buat form input text
-    Button btnSearch;
+    private TextInputEditText qSearch; // untuk buat form input text
+    private Button btnSearch;
     String API;
-    String jsonResponse;
     String id, cityName, countryCode, countryName;
     String search;
 
@@ -47,6 +48,7 @@ public class LocationInput extends AppCompatActivity {
     private LinearLayoutManager linearLayoutManager; //implementasi linear layout, biar listnya menurun kebawah secara linear
 
     private TextView listKosong;
+    private TextView lokasiNotFound;
     OkHttpClient client = new OkHttpClient();
     Locale loc;
 
@@ -58,8 +60,11 @@ public class LocationInput extends AppCompatActivity {
 
         API = getResources().getString(R.string.api_key);
 
-        qSearch = (EditText) findViewById(R.id.search_lokasi);
+        qSearch = (TextInputEditText) findViewById(R.id.search_lokasi);
         btnSearch = (Button) findViewById(R.id.button_search);
+
+        lokasiNotFound = findViewById(R.id.lokasi_notfound);
+        lokasiNotFound.setVisibility(View.GONE);
 
         listKosong = findViewById(R.id.search_kosong);
 
@@ -136,6 +141,15 @@ public class LocationInput extends AppCompatActivity {
             try {
                 JSONObject jsonObj = new JSONObject(result);
                 JSONArray list = jsonObj.getJSONArray("list");
+
+                if (jsonObj.getInt("count") == 0){
+                    lokasiNotFound.setVisibility(View.VISIBLE);
+                }
+
+                else {
+                    lokasiNotFound.setVisibility(View.GONE);
+                }
+
                 for (int i = 0; i < list.length(); i++) {
                     JSONObject row = list.getJSONObject(i);
                     JSONObject sys = row.getJSONObject("sys");

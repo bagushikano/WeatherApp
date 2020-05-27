@@ -67,8 +67,6 @@ public class MainActivity extends AppCompatActivity {
         if (resultCode == Activity.RESULT_OK && requestCode == INPUT_LOKASI) { // ini untuk nangkep result activity dari activity yang key nya INPUT_LOKASI (addlocation kalo disni)
             if (cuaca.hasExtra("KOTA") && cuaca.hasExtra("NEGARA")) {  //untuk ngecek apakah activitynya ada nerima data dengan key KOTA dan NEGARA
                 locationArray.add(new LocationModel.Location(cuaca.getExtras().getString("KOTA"), cuaca.getExtras().getString("NEGARA"), cuaca.getExtras().getString("LOCATIONID")));
-                Toast.makeText(this, "kota= " + cuaca.getExtras().getString("KOTA") + " negara= " +
-                        cuaca.getExtras().getString("NEGARA"), Toast.LENGTH_SHORT).show();
                 recyclerView.setVisibility(View.VISIBLE);
                 listKosong.setVisibility(View.GONE);
                 adapter.notifyDataSetChanged();

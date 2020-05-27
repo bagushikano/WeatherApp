@@ -1,16 +1,27 @@
 <resources>
 
-    <style name="CustomTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+<!--    <style name="CustomTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
+<!--        <item name="colorPrimary">@color/primary</item>-->
+<!--        <item name="colorPrimaryDark">@color/primary_dark</item>-->
+<!--        <item name="colorAccent">@color/accent</item>-->
+<!--        <item name="android:textColor">#FFFFFF</item>-->
+
+<!--    </style>-->
+
+    <style name="CustomTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="colorSecondaryVariant">@color/accent</item>
+        <item name="colorSecondary">@color/accent</item>
         <item name="android:textColor">#FFFFFF</item>
 
     </style>
 
+
     <style name="ProgressBarStyle" parent="Theme.MaterialComponents.Dialog">
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:textColor">@color/colorAccent</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:textColor">@color/primary_text</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

@@ -68,6 +68,17 @@ public class LocationList extends RecyclerView.Adapter<LocationList.ViewHolder> 
                     mContext.startActivity(cuaca); //nge start activitynya dengan intent cuaca
                 }
             });
+
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    int position = getAdapterPosition();
+                    lokasi.remove(position);
+                    notifyItemRemoved(position);
+                    notifyItemRangeChanged(position, lokasi.size());
+                    return false;
+                }
+            });
         }
     }
 }
