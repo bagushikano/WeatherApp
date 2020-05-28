@@ -3,13 +3,11 @@ package com.kelompok4.weatherapp;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -55,7 +53,6 @@ public class LocationList extends RecyclerView.Adapter<LocationList.ViewHolder> 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             txt_country = itemView.findViewById(R.id.txt_country);
             txt_city = itemView.findViewById(R.id.txt_city);
 
@@ -64,8 +61,6 @@ public class LocationList extends RecyclerView.Adapter<LocationList.ViewHolder> 
                 public void onClick(View v) { // ini listener untuk listnya jadi tiap listnya di klik, ini method di panggil
                     int position = getAdapterPosition(); // untuk mendapatkan posisi di adapter
                     LocationModel.Location modelLokasi = lokasi.get(position); //untuk dapetin posisi list yang di klik
-                    Log.d("country_value", "Value: " + modelLokasi.getCountryName()); //untuk debugging aja, nge print di logcat
-                    Log.d("city_value", "Value: " + modelLokasi.getCityName());
                     Intent cuaca = new Intent(mContext, CuacaActivity.class);
                     cuaca.putExtra("LOCATIONID", modelLokasi.getLocationId());
                     mContext.startActivity(cuaca); //nge start activitynya dengan intent cuaca

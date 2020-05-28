@@ -33,16 +33,12 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView listKosong;
 
-    private Toolbar mainToolbar;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) { //on create ini selalu di jalanin setiap activity di buat di lifecycle android
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); //untuk nge set layout activity nya dengan xml activity_main
 
         listKosong = findViewById(R.id.empty_view);
-
-//        mainToolbar = (Toolbar) findViewById(R.id.toolbar);
 
         locationArray = new ArrayList<>(); //di dalem locationArray di buatin arraylist nantinya arraylist ini di tampilin
 
@@ -51,15 +47,24 @@ public class MainActivity extends AppCompatActivity {
         adapter = new LocationList(this, locationArray); //ngehubungin adapter sama data di array locationArray nya
         linearLayoutManager = new LinearLayoutManager(this); // menampilkan item berupa list
 
+        listKosong.setVisibility(View.VISIBLE);
+
+        adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onItemRangeRemoved(int positionStart, int itemCount) {
+                super.onItemRangeRemoved(positionStart, itemCount);
+                if (adapter.getItemCount() == 0) {
+                    recyclerView.setVisibility(View.GONE);
+                    listKosong.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
         recyclerView.setLayoutManager(linearLayoutManager); // menset layoutmanager yg telah kita buat
         recyclerView.setAdapter(adapter); // menset adapter-nya ke recycleview nya sendiri
 
-        if (locationArray.isEmpty()) {
-            recyclerView.setVisibility(View.GONE);
-            listKosong.setVisibility(View.VISIBLE);
-        }
 
-        FloatingActionButton fab = findViewById(R.id.fab); //fab button utk nambah lokasi
+        FloatingActionButton fab = findViewById(R.id.add_location_fab); //fab button utk nambah lokasi
         fab.setOnClickListener(new View.OnClickListener() { //listener untuk fab buttonnya tiap di klik
             @Override
             public void onClick(View view) { //aksi ketika fab buttonnya di klik
@@ -81,7 +86,6 @@ public class MainActivity extends AppCompatActivity {
                     locationArray.add(new LocationModel.Location(cuaca.getExtras().getString("KOTA"), cuaca.getExtras().getString("NEGARA"), cuaca.getExtras().getString("LOCATIONID")));
                     recyclerView.setVisibility(View.VISIBLE);
                     listKosong.setVisibility(View.GONE);
-                    adapter.notifyDataSetChanged();
                 }
             }
         }

@@ -1,7 +1,6 @@
 package com.kelompok4.weatherapp;
 
 import java.io.Serializable;
-import java.util.Locale;
 
 public class LocationModel implements Serializable {
     public static class Location {

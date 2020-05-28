@@ -40,9 +40,9 @@
             android:layout_height="0dp"
             android:layout_marginEnd="135dp"
             android:background="@color/icons"
-            app:layout_constraintBottom_toBottomOf="@+id/linearLayout4"
+            app:layout_constraintBottom_toBottomOf="@+id/wind_view"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/linearLayout2"
+            app:layout_constraintTop_toTopOf="@+id/sunrise_sunset_view"
             app:layout_constraintVertical_bias="0.0" />
 
         <View
@@ -51,11 +51,11 @@
             android:layout_height="0dp"
             android:layout_marginStart="135dp"
             android:background="@color/icons"
-            app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
+            app:layout_constraintBottom_toBottomOf="@+id/sunrise_sunset_view"
             app:layout_constraintEnd_toStartOf="@+id/divider5"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/linearLayout2"
+            app:layout_constraintTop_toTopOf="@+id/sunrise_sunset_view"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
@@ -137,7 +137,7 @@
             app:layout_constraintTop_toBottomOf="@+id/temp" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/linearLayout2"
+            android:id="@+id/sunrise_sunset_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
@@ -210,7 +210,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/linearLayout3"
+            android:id="@+id/feels_like_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="#00F1EBF1"
@@ -218,7 +218,7 @@
             app:layout_constraintEnd_toStartOf="@+id/divider5"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/divider6"
-            app:layout_constraintTop_toTopOf="@+id/linearLayout2">
+            app:layout_constraintTop_toTopOf="@+id/sunrise_sunset_view">
 
             <ImageView
                 android:id="@+id/imageView3"
@@ -254,7 +254,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/linearLayout4"
+            android:id="@+id/wind_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="#00F1EBF1"
@@ -262,7 +262,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/divider5"
-            app:layout_constraintTop_toTopOf="@+id/linearLayout3">
+            app:layout_constraintTop_toTopOf="@+id/feels_like_view">
 
             <ImageView
                 android:id="@+id/imageView4"
@@ -305,7 +305,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ProgressBar
-        android:id="@+id/spinner"
+        android:id="@+id/muter_muter"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_centerHorizontal="true"
@@ -323,7 +323,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/errorText"
+        android:id="@+id/ups_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"

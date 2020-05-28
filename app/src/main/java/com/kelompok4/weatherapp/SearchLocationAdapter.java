@@ -1,7 +1,5 @@
 package com.kelompok4.weatherapp;
 
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;

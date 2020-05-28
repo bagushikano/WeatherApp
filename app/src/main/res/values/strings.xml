@@ -5,7 +5,6 @@
     <string name="list_kosong">Tekan tombol + untuk menambahkan lokasi</string>
     <string name="list_kota">Kota: </string>
     <string name="list_negara">Negara: </string>
-    <string name="api_key">1a1d0fc149ee41cf1fdaefd65a28d1eb</string>
     <string name="search_kosong">Silahkan cari lokasi</string>
     <string name="wait">Silahkan tunggu</string>
     <string name="lokasi_notfound">Lokasi tidak ditemukan!</string>
@@ -17,6 +16,7 @@
     <string name="version_string">Versi</string>
     <string name="something_wrong">Ups terjadi kesalahan</string>
     <string name="location_exist">Lokasi sudah terdapat dalam list</string>
+    <string name="timeout_message">Koneksi gagal di lakukan, silahkan coba lagi nanti atau periksa koneksi internet anda</string>
 
 
 </resources>

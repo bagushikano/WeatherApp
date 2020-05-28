@@ -1,23 +1,18 @@
 package com.kelompok4.weatherapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -25,10 +20,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -48,7 +42,7 @@ public class LocationInput extends AppCompatActivity {
 
     private TextView listKosong;
     private TextView lokasiNotFound;
-    private OkHttpClient client = new OkHttpClient();
+
     private Locale loc;
 
     @Override
@@ -56,7 +50,7 @@ public class LocationInput extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.location_input);
 
-        API = getResources().getString(R.string.api_key);
+        API = BuildConfig.API_KEY;
 
         qSearch = (TextInputEditText) findViewById(R.id.search_lokasi);
         btnSearch = (Button) findViewById(R.id.button_search);
@@ -119,13 +113,19 @@ public class LocationInput extends AppCompatActivity {
             Request.Builder builder = new Request.Builder();
             builder.url(url);
             Request request = builder.build();
+
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .connectTimeout(10, TimeUnit.SECONDS)
+                    .writeTimeout(10, TimeUnit.SECONDS)
+                    .readTimeout(30, TimeUnit.SECONDS)
+                    .build();
             try {
                 Response response = client.newCall(request).execute();
                 return response.body().string();
-            }catch (Exception e){
-                e.printStackTrace();
             }
-            return null;
+            catch (Exception e) {
+                return "1";
+            }
         }
 
         @Override
@@ -133,31 +133,37 @@ public class LocationInput extends AppCompatActivity {
             if (dialog.isShowing()) {
                 dialog.dismiss();
             }
-            try {
-                JSONObject jsonObj = new JSONObject(result);
-                JSONArray list = jsonObj.getJSONArray("list");
-                if (jsonObj.getInt("count") == 0){
-                    lokasiNotFound.setVisibility(View.VISIBLE);
-                }
-                else {
-                    lokasiNotFound.setVisibility(View.GONE);
-                }
-                for (int i = 0; i < list.length(); i++) {
-                    JSONObject row = list.getJSONObject(i);
-                    JSONObject sys = row.getJSONObject("sys");
-                    id = row.getString("id");
-                    cityName = row.getString("name");
-                    countryCode = sys.getString("country");
-                    loc = new Locale("",countryCode);
-                    countryName = loc.getDisplayCountry();
-                    locationArray.add(new LocationModel.Location(cityName, countryName, id));
-                }
-                recyclerView.setVisibility(View.VISIBLE);
-                listKosong.setVisibility(View.GONE);
-                adapter.notifyDataSetChanged();
+
+            if (result.equals("1")){
+                Toast.makeText(getApplicationContext(), R.string.timeout_message, Toast.LENGTH_SHORT).show();
             }
-            catch (JSONException e) {
-                e.printStackTrace();
+            else{
+                try {
+                    JSONObject jsonObj = new JSONObject(result);
+                    JSONArray list = jsonObj.getJSONArray("list");
+                    if (jsonObj.getInt("count") == 0){
+                        lokasiNotFound.setVisibility(View.VISIBLE);
+                    }
+                    else {
+                        lokasiNotFound.setVisibility(View.GONE);
+                    }
+                    for (int i = 0; i < list.length(); i++) {
+                        JSONObject row = list.getJSONObject(i);
+                        JSONObject sys = row.getJSONObject("sys");
+                        id = row.getString("id");
+                        cityName = row.getString("name");
+                        countryCode = sys.getString("country");
+                        loc = new Locale("",countryCode);
+                        countryName = loc.getDisplayCountry();
+                        locationArray.add(new LocationModel.Location(cityName, countryName, id));
+                    }
+                    recyclerView.setVisibility(View.VISIBLE);
+                    listKosong.setVisibility(View.GONE);
+                    adapter.notifyDataSetChanged();
+                }
+                catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }

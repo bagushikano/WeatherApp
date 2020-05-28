@@ -5,7 +5,6 @@
         <item name="colorAccent">@color/accent</item>
         <item name="colorSecondaryVariant">@color/accent</item>
         <item name="colorSecondary">@color/accent</item>
-<!--        <item name="android:textColor">#FFFFFF</item>-->
         <item name="android:navigationBarColor">@color/primary</item>
     </style>
 
@@ -20,15 +19,12 @@
         <item name="android:windowTranslucentNavigation">false</item>
     </style>
 
-
-
     <style name="ProgressBarStyle" parent="Theme.MaterialComponents.Dialog">
         <item name="colorAccent">@color/accent</item>
         <item name="android:textColor">@color/primary_text</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>
