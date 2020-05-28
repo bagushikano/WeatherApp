@@ -1,6 +1,7 @@
 package com.kelompok4.weatherapp;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,8 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.ArrayList;
 
@@ -17,6 +21,7 @@ public class LocationList extends RecyclerView.Adapter<LocationList.ViewHolder> 
 
     private Context mContext;
     private ArrayList<LocationModel.Location> lokasi;
+    int position;
 
     public LocationList(Context context, ArrayList<LocationModel.Location> lokasi) {
         mContext = context;
@@ -62,8 +67,6 @@ public class LocationList extends RecyclerView.Adapter<LocationList.ViewHolder> 
                     Log.d("country_value", "Value: " + modelLokasi.getCountryName()); //untuk debugging aja, nge print di logcat
                     Log.d("city_value", "Value: " + modelLokasi.getCityName());
                     Intent cuaca = new Intent(mContext, CuacaActivity.class);
-                    cuaca.putExtra("KOTA", modelLokasi.getCityName());
-                    cuaca.putExtra("NEGARA", modelLokasi.getCountryName());
                     cuaca.putExtra("LOCATIONID", modelLokasi.getLocationId());
                     mContext.startActivity(cuaca); //nge start activitynya dengan intent cuaca
                 }
@@ -72,10 +75,28 @@ public class LocationList extends RecyclerView.Adapter<LocationList.ViewHolder> 
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    int position = getAdapterPosition();
-                    lokasi.remove(position);
-                    notifyItemRemoved(position);
-                    notifyItemRangeChanged(position, lokasi.size());
+                    position = getAdapterPosition();
+                    LocationModel.Location modelLokasi = lokasi.get(position);
+
+                    new MaterialAlertDialogBuilder(mContext)
+                            .setTitle("Hapus lokasi pada list")
+                            .setMessage("Yakin ingin menghapus " + modelLokasi.getCityName() + " dari list?")
+                            .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    dialogInterface.dismiss();
+                                    lokasi.remove(position);
+                                    notifyItemRemoved(position);
+                                    notifyItemRangeChanged(position, lokasi.size());
+                                }
+                            })
+                            .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    dialogInterface.dismiss();
+                                }
+                            })
+                            .show();
                     return false;
                 }
             });

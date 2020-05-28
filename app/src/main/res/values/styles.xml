@@ -1,22 +1,25 @@
 <resources>
-
-<!--    <style name="CustomTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
-<!--        <item name="colorPrimary">@color/primary</item>-->
-<!--        <item name="colorPrimaryDark">@color/primary_dark</item>-->
-<!--        <item name="colorAccent">@color/accent</item>-->
-<!--        <item name="android:textColor">#FFFFFF</item>-->
-
-<!--    </style>-->
-
     <style name="CustomTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primary_dark</item>
         <item name="colorAccent">@color/accent</item>
         <item name="colorSecondaryVariant">@color/accent</item>
         <item name="colorSecondary">@color/accent</item>
-        <item name="android:textColor">#FFFFFF</item>
-
+<!--        <item name="android:textColor">#FFFFFF</item>-->
+        <item name="android:navigationBarColor">@color/primary</item>
     </style>
+
+    <style name="CuacaActivity" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="colorSecondaryVariant">@color/accent</item>
+        <item name="colorSecondary">@color/accent</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+    </style>
+
 
 
     <style name="ProgressBarStyle" parent="Theme.MaterialComponents.Dialog">

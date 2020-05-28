@@ -35,7 +35,7 @@
         android:layout_marginTop="5dp"
 
         android:layout_marginBottom="8dp"
-        android:hint="Cari Kota"
+        android:hint="@string/location_search_hint"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toStartOf="@+id/button_search"
         app:layout_constraintHorizontal_bias="0.15"
@@ -62,7 +62,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:backgroundTint="@color/accent"
-        android:text="Cari"
+        android:text="@string/location_search_button"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/search_form"

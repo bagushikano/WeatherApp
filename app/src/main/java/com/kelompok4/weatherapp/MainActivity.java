@@ -3,12 +3,16 @@ package com.kelompok4.weatherapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,12 +33,16 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView listKosong;
 
+    private Toolbar mainToolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) { //on create ini selalu di jalanin setiap activity di buat di lifecycle android
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); //untuk nge set layout activity nya dengan xml activity_main
 
         listKosong = findViewById(R.id.empty_view);
+
+//        mainToolbar = (Toolbar) findViewById(R.id.toolbar);
 
         locationArray = new ArrayList<>(); //di dalem locationArray di buatin arraylist nantinya arraylist ini di tampilin
 
@@ -74,5 +82,20 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_about) {
+            Intent about = new Intent(this, AboutActivity.class);
+            startActivity(about);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

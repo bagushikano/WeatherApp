@@ -9,7 +9,12 @@
     <string name="search_kosong">Silahkan cari lokasi</string>
     <string name="wait">Silahkan tunggu</string>
     <string name="lokasi_notfound">Lokasi tidak ditemukan!</string>
-
+    <string name="location_delete_dialog_title">Hapus lokasi pada list</string>
+    <string name="location_search_hint">Cari kota</string>
+    <string name="location_search_button">Cari</string>
+    <string name="about">Tentang Aplikasi</string>
+    <string name="title_activity_about_activity">Tentang Aplikasi Cuaca</string>
+    <string name="version_string">Versi</string>
 
 
 </resources>

@@ -37,21 +37,19 @@ import okhttp3.Response;
 public class LocationInput extends AppCompatActivity {
     private TextInputEditText qSearch; // untuk buat form input text
     private Button btnSearch;
-    String API;
-    String id, cityName, countryCode, countryName;
-    String search;
+    private String API;
+    private String id, cityName, countryCode, countryName;
+    private String search;
 
     private ArrayList<LocationModel.Location> locationArray; //deklarasi arraylist bertipe model Location pada class LocationModel
-
     private SearchLocationAdapter adapter; //implementasi adapter untuk recycleview dari kelas LocationList
     private RecyclerView recyclerView; //implementasi recycleview
     private LinearLayoutManager linearLayoutManager; //implementasi linear layout, biar listnya menurun kebawah secara linear
 
     private TextView listKosong;
     private TextView lokasiNotFound;
-    OkHttpClient client = new OkHttpClient();
-    Locale loc;
-
+    private OkHttpClient client = new OkHttpClient();
+    private Locale loc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,18 +63,17 @@ public class LocationInput extends AppCompatActivity {
 
         lokasiNotFound = findViewById(R.id.lokasi_notfound);
         lokasiNotFound.setVisibility(View.GONE);
-
         listKosong = findViewById(R.id.search_kosong);
 
-        locationArray = new ArrayList<>(); //di dalem locationArray di buatin arraylist nantinya arraylist ini di tampilin
+        locationArray = new ArrayList<>();
 
-        recyclerView = findViewById(R.id.recyclerviewsearch); //untuk nge set layout recycleview nya sesuai xml recycleview
+        recyclerView = findViewById(R.id.recyclerviewsearch);
 
-        adapter = new SearchLocationAdapter(this, locationArray, this); //ngehubungin adapter sama data di array locationArray nya
-        linearLayoutManager = new LinearLayoutManager(this); // menampilkan item berupa list
+        adapter = new SearchLocationAdapter(this, locationArray, this);
+        linearLayoutManager = new LinearLayoutManager(this);
 
-        recyclerView.setLayoutManager(linearLayoutManager); // menset layoutmanager yg telah kita buat
-        recyclerView.setAdapter(adapter); // menset adapter-nya ke recycleview nya sendiri
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(adapter);
 
         if (locationArray.isEmpty()) {
             recyclerView.setVisibility(View.GONE);
@@ -109,7 +106,6 @@ public class LocationInput extends AppCompatActivity {
     }
 
     class SearchLokasi extends AsyncTask<String, Void, String> {
-
         private ProgressDialog dialog = new ProgressDialog(LocationInput.this, R.style.ProgressBarStyle);
         @Override
         protected void onPreExecute() {
@@ -119,7 +115,6 @@ public class LocationInput extends AppCompatActivity {
         }
 
         protected String doInBackground(String... args) {
-
             String url = "http://api.openweathermap.org/data/2.5/find?mode=json&type=like&q=" + search + "&cnt=10&appid=" + API;
             Request.Builder builder = new Request.Builder();
             builder.url(url);
@@ -141,31 +136,24 @@ public class LocationInput extends AppCompatActivity {
             try {
                 JSONObject jsonObj = new JSONObject(result);
                 JSONArray list = jsonObj.getJSONArray("list");
-
                 if (jsonObj.getInt("count") == 0){
                     lokasiNotFound.setVisibility(View.VISIBLE);
                 }
-
                 else {
                     lokasiNotFound.setVisibility(View.GONE);
                 }
-
                 for (int i = 0; i < list.length(); i++) {
                     JSONObject row = list.getJSONObject(i);
                     JSONObject sys = row.getJSONObject("sys");
                     id = row.getString("id");
                     cityName = row.getString("name");
                     countryCode = sys.getString("country");
-
                     loc = new Locale("",countryCode);
                     countryName = loc.getDisplayCountry();
-
-                    locationArray.add(new LocationModel.Location(countryName, cityName, id));
+                    locationArray.add(new LocationModel.Location(cityName, countryName, id));
                 }
-
                 recyclerView.setVisibility(View.VISIBLE);
                 listKosong.setVisibility(View.GONE);
-
                 adapter.notifyDataSetChanged();
             }
             catch (JSONException e) {
