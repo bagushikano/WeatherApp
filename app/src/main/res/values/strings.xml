@@ -16,6 +16,7 @@
     <string name="title_activity_about_activity">Tentang Aplikasi Cuaca</string>
     <string name="version_string">Versi</string>
     <string name="something_wrong">Ups terjadi kesalahan</string>
+    <string name="location_exist">Lokasi sudah terdapat dalam list</string>
 
 
 </resources>

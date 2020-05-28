@@ -137,9 +137,15 @@ public class CuacaActivity extends AppCompatActivity {
                     drawableBackground.setImageResource(R.drawable.atmosphere);
                 }
 
+                else if (weatherBackground == 600 || weatherBackground == 601 || weatherBackground == 602 ||
+                        weatherBackground == 611 || weatherBackground == 612 || weatherBackground ==  613 || weatherBackground == 615 ||
+                        weatherBackground == 616 || weatherBackground == 620 || weatherBackground == 621|| weatherBackground == 622){
+                    drawableBackground.setImageResource(R.drawable.atmosphere);
+                }
+
                 else if (weatherBackground == 500 || weatherBackground == 501 || weatherBackground == 503 || weatherBackground == 504 ||
                         weatherBackground == 511 || weatherBackground == 520 || weatherBackground == 521 || weatherBackground == 522 || weatherBackground == 531){
-                    drawableBackground.setImageResource(R.drawable.rain);
+                    drawableBackground.setImageResource(R.drawable.snow);
                 }
 
                 else if (weatherBackground == 300 || weatherBackground == 301 || weatherBackground ==  302 || weatherBackground == 310 ||

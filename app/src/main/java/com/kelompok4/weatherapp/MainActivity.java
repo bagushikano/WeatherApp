@@ -74,10 +74,15 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, cuaca);
         if (resultCode == Activity.RESULT_OK && requestCode == INPUT_LOKASI) { // ini untuk nangkep result activity dari activity yang key nya INPUT_LOKASI (addlocation kalo disni)
             if (cuaca.hasExtra("KOTA") && cuaca.hasExtra("NEGARA")) {  //untuk ngecek apakah activitynya ada nerima data dengan key KOTA dan NEGARA
-                locationArray.add(new LocationModel.Location(cuaca.getExtras().getString("KOTA"), cuaca.getExtras().getString("NEGARA"), cuaca.getExtras().getString("LOCATIONID")));
-                recyclerView.setVisibility(View.VISIBLE);
-                listKosong.setVisibility(View.GONE);
-                adapter.notifyDataSetChanged();
+                if (locationArray.contains(new LocationModel.Location(cuaca.getExtras().getString("KOTA"), cuaca.getExtras().getString("NEGARA"), cuaca.getExtras().getString("LOCATIONID")))){
+                    Toast.makeText(this, getResources().getString(R.string.location_exist), Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    locationArray.add(new LocationModel.Location(cuaca.getExtras().getString("KOTA"), cuaca.getExtras().getString("NEGARA"), cuaca.getExtras().getString("LOCATIONID")));
+                    recyclerView.setVisibility(View.VISIBLE);
+                    listKosong.setVisibility(View.GONE);
+                    adapter.notifyDataSetChanged();
+                }
             }
         }
     }

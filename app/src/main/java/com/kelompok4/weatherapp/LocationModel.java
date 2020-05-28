@@ -1,6 +1,7 @@
 package com.kelompok4.weatherapp;
 
 import java.io.Serializable;
+import java.util.Locale;
 
 public class LocationModel implements Serializable {
     public static class Location {
@@ -36,6 +37,23 @@ public class LocationModel implements Serializable {
 
         public void setLocationId(String LocationId) {
             locationId = LocationId;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof Location)) return false;
+
+            Location location = (Location) o;
+
+            if (!locationId.equals(location.locationId)) return false;
+
+            return true;
+        }
+
+        @Override
+        public int hashCode() {
+            return locationId.hashCode();
         }
     }
 }
