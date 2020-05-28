@@ -62,7 +62,7 @@
             android:id="@+id/address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="64dp"
             android:text="Location Placeholder"
             android:textColor="#FFFFFF"
             android:textSize="24dp"
@@ -100,7 +100,7 @@
             android:id="@+id/temp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="251dp"
+            android:layout_marginTop="200dp"
             android:layout_marginBottom="252dp"
             android:fontFamily="sans-serif-thin"
             android:text="29°C"
@@ -109,352 +109,218 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/address" />
+            app:layout_constraintTop_toBottomOf="@+id/address"
+            app:layout_constraintVertical_bias="0.39" />
 
 
         <TextView
             android:id="@+id/temp_min"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginEnd="49dp"
-            android:layout_marginRight="49dp"
-            android:text="Min Temp: 05:05 AM"
-            android:textColor="#FFFFFF"
-            app:layout_constraintBottom_toTopOf="@+id/space"
-            app:layout_constraintEnd_toEndOf="@+id/space"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/space" />
-
-        <Space
-            android:id="@+id/space"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="179dp"
-            android:layout_marginLeft="179dp"
-            android:layout_marginTop="9dp"
+            android:layout_marginStart="64dp"
+            android:text="Min Temp: C"
             android:textColor="#FFFFFF"
             app:layout_constraintEnd_toStartOf="@+id/temp_max"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/temp" />
+            app:layout_constraintTop_toTopOf="@+id/temp_max" />
 
         <TextView
             android:id="@+id/temp_max"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="49dp"
-            android:layout_marginRight="49dp"
-            android:text="Max Temp: 05:05 PM"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="64dp"
+            android:text="Max Temp: C"
             android:textColor="#FFFFFF"
-            app:layout_constraintBottom_toTopOf="@+id/space"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/space"
-            app:layout_constraintTop_toTopOf="@+id/space" />
+            app:layout_constraintTop_toBottomOf="@+id/temp" />
 
-
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="32dp"
             android:background="#00F1EBF1"
             android:gravity="center"
-            android:orientation="vertical"
-            android:padding="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/divider6"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/temp_min">
 
             <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/sunrise"
-                android:tint="#FFFFFF" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="5dp" />
-
-            <TextView
+                android:id="@+id/imageView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sunrise"
-                android:textColor="#FFFFFF"
-                android:textSize="12dp" />
+                android:src="@drawable/ic_sunsetsunrise"
+                android:tint="#FFFFFF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/sunrise"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Sunrise"
+                android:textColor="#FFFFFF"
+                android:textSize="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+            <TextView
+                android:id="@+id/sunset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="Sunset"
+                android:textColor="#FFFFFF"
+                android:textSize="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/sunrise" />
+
+            <TextView
+                android:id="@+id/sunset_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
                 android:text="06:40 AM"
                 android:textColor="#FFFFFF"
-                android:textSize="14dp" />
-        </LinearLayout>
+                android:textSize="13dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/sunset"
+                app:layout_constraintTop_toTopOf="@+id/sunrise_time" />
 
-        <Space
-            android:id="@+id/space2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-            app:layout_constraintEnd_toStartOf="@+id/linearLayout3"
-            app:layout_constraintStart_toEndOf="@+id/linearLayout2"
-            app:layout_constraintTop_toTopOf="@+id/linearLayout2" />
+            <TextView
+                android:id="@+id/sunrise_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="06:40 AM"
+                android:textColor="#FFFFFF"
+                android:textSize="13dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/sunrise"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sunrise" />
 
-        <LinearLayout
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="#00F1EBF1"
             android:gravity="center"
-            android:orientation="vertical"
-            android:padding="8dp"
             app:layout_constraintEnd_toStartOf="@+id/divider5"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/divider6"
             app:layout_constraintTop_toTopOf="@+id/linearLayout2">
 
             <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/sunset"
-                android:tint="#FFFFFF" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="5dp" />
-
-            <TextView
+                android:id="@+id/imageView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sunset"
-                android:textColor="#FFFFFF"
-                android:textSize="12dp" />
+                android:src="@drawable/ic_feellike"
+                android:tint="#FFFFFF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/sunset"
+                android:id="@+id/feels_like"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="06:40 AM"
+                android:text="Feels Like"
                 android:textColor="#FFFFFF"
-                android:textSize="14dp" />
-        </LinearLayout>
+                android:textSize="12dp"
+                app:layout_constraintEnd_toEndOf="@+id/imageView3"
+                app:layout_constraintStart_toStartOf="@+id/imageView3"
+                app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
-        <Space
-            android:id="@+id/space3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="131dp"
-            android:layout_marginLeft="131dp"
-            android:layout_marginEnd="131dp"
-            android:layout_marginRight="131dp"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
-            app:layout_constraintEnd_toEndOf="@+id/linearLayout4"
-            app:layout_constraintStart_toStartOf="@+id/linearLayout3"
-            app:layout_constraintTop_toTopOf="@+id/linearLayout4" />
+            <TextView
+                android:id="@+id/feels_like_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="something c"
+                android:textColor="#FFFFFF"
+                android:textSize="13dp"
+                app:layout_constraintEnd_toEndOf="@+id/imageView3"
+                app:layout_constraintStart_toStartOf="@+id/imageView3"
+                app:layout_constraintTop_toBottomOf="@+id/feels_like" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="#00F1EBF1"
             android:gravity="center"
-            android:orientation="vertical"
-            android:padding="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/divider5"
             app:layout_constraintTop_toTopOf="@+id/linearLayout3">
 
             <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/wind"
-                android:tint="#FFFFFF" />
-
-            <Space
+                android:id="@+id/imageView4"
                 android:layout_width="wrap_content"
-                android:layout_height="5dp" />
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_wind"
+                android:tint="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.492"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
+                android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Wind"
                 android:textColor="#FFFFFF"
-                android:textSize="12dp" />
+                android:textSize="12dp"
+                app:layout_constraintEnd_toEndOf="@+id/imageView4"
+                app:layout_constraintStart_toStartOf="@+id/imageView4"
+                app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
             <TextView
                 android:id="@+id/wind"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="06:40 AM"
+                android:text="something m/s"
                 android:textColor="#FFFFFF"
-                android:textSize="14dp" />
-        </LinearLayout>
-
-        <Space
-            android:id="@+id/space4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="82dp"
-            android:layout_marginBottom="82dp"
-            app:layout_constraintBottom_toBottomOf="@+id/linearLayout5"
-            app:layout_constraintEnd_toStartOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/linearLayout2" />
-
-
-        <LinearLayout
-            android:id="@+id/linearLayout5"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:background="#3CF1EBF1"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/linearLayout6"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/pressure"
-                android:tint="#FFFFFF" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="5dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Pressure"
-                android:textColor="#FFFFFF"
-                android:textSize="12dp" />
-
-            <TextView
-                android:id="@+id/pressure"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="06:40 AM"
-                android:textColor="#FFFFFF"
-                android:textSize="14dp" />
-        </LinearLayout>
-
-        <Space
-            android:id="@+id/space5"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
-            app:layout_constraintEnd_toStartOf="@+id/linearLayout6"
-            app:layout_constraintStart_toEndOf="@+id/linearLayout5"
-            app:layout_constraintTop_toTopOf="@+id/linearLayout5" />
-
-        <LinearLayout
-            android:id="@+id/linearLayout6"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:background="#3CF1EBF1"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/linearLayout7"
-            app:layout_constraintStart_toEndOf="@+id/linearLayout5"
-            tools:layout_editor_absoluteY="642dp">
-
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/humidity"
-                android:tint="#FFFFFF" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="5dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Humidity"
-                android:textColor="#FFFFFF"
-                android:textSize="12dp" />
-
-            <TextView
-                android:id="@+id/humidity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="06:40 AM"
-                android:textColor="#FFFFFF"
-                android:textSize="14dp" />
-        </LinearLayout>
-
-        <Space
-            android:id="@+id/space6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="131dp"
-            android:layout_marginLeft="131dp"
-            android:layout_marginEnd="131dp"
-            android:layout_marginRight="131dp"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout6"
-            app:layout_constraintEnd_toEndOf="@+id/linearLayout7"
-            app:layout_constraintStart_toStartOf="@+id/linearLayout6"
-            app:layout_constraintTop_toTopOf="@+id/linearLayout6" />
-
-        <LinearLayout
-            android:id="@+id/linearLayout7"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="#3CF1EBF1"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/linearLayout6"
-            tools:layout_editor_absoluteY="642dp">
-
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/info"
-                android:tint="#FFFFFF" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="5dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="test"
-                android:textColor="#FFFFFF"
-                android:textSize="12dp" />
-
-            <TextView
-                android:id="@+id/about"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="test"
-                android:textColor="#FFFFFF"
-                android:textSize="14dp" />
-        </LinearLayout>
-
+                android:textSize="13dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/textView"
+                app:layout_constraintHorizontal_bias="0.478"
+                app:layout_constraintStart_toStartOf="@+id/textView"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ProgressBar
-        android:id="@+id/loader"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/spinner"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="200dp"
+        android:layout_marginBottom="200dp"
         android:gravity="center"
-        android:visibility="gone" />
+        android:progressTint="#FFFFFF"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/errorText"
@@ -462,7 +328,7 @@
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="Something went wrong"
+        android:text="@string/something_wrong"
         android:gravity="center"
         android:visibility="gone" />
 

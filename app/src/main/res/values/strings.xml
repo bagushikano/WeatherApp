@@ -15,6 +15,7 @@
     <string name="about">Tentang Aplikasi</string>
     <string name="title_activity_about_activity">Tentang Aplikasi Cuaca</string>
     <string name="version_string">Versi</string>
+    <string name="something_wrong">Ups terjadi kesalahan</string>
 
 
 </resources>

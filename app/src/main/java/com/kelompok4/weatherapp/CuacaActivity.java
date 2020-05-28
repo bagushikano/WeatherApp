@@ -2,16 +2,13 @@ package com.kelompok4.weatherapp;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.ViewCompat;
 
 
 import org.json.JSONException;
@@ -22,12 +19,8 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class CuacaActivity extends AppCompatActivity {
@@ -35,8 +28,7 @@ public class CuacaActivity extends AppCompatActivity {
     String API;
     private String KEY_ID = "LOCATIONID";
 
-    Long updatedAt;
-    String updatedAtText;
+    Long updatedAtUnix;
 
     String weatherDescription;
     String countryCode;
@@ -47,8 +39,7 @@ public class CuacaActivity extends AppCompatActivity {
     String temp;
     String tempMin;
     String tempMax;
-    String pressure;
-    String humidity;
+    String feelsLike;
     String windSpeed;
 
     Long sunriseUnix;
@@ -57,7 +48,9 @@ public class CuacaActivity extends AppCompatActivity {
     Date sunriseFormatted;
     Date sunsetFormatted;
     SimpleDateFormat sunTime;
+    SimpleDateFormat updatedAtTime;
     Long timeZone;
+    Date updatedAtFormated;
 
     OkHttpClient client = new OkHttpClient();
 
@@ -65,7 +58,7 @@ public class CuacaActivity extends AppCompatActivity {
     private int weatherBackground;
 
     TextView addressTxt, updated_atTxt, statusTxt, tempTxt, temp_minTxt, temp_maxTxt, sunriseTxt,
-            sunsetTxt, windTxt, pressureTxt, humidityTxt;
+            sunsetTxt, windTxt, feelsLiketxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,11 +80,10 @@ public class CuacaActivity extends AppCompatActivity {
         tempTxt = findViewById(R.id.temp);
         temp_minTxt = findViewById(R.id.temp_min);
         temp_maxTxt = findViewById(R.id.temp_max);
-        sunriseTxt = findViewById(R.id.sunrise);
-        sunsetTxt = findViewById(R.id.sunset);
+        sunriseTxt = findViewById(R.id.sunrise_time);
+        sunsetTxt = findViewById(R.id.sunset_time);
         windTxt = findViewById(R.id.wind);
-        pressureTxt = findViewById(R.id.pressure);
-        humidityTxt = findViewById(R.id.humidity);
+        feelsLiketxt = findViewById(R.id.feels_like_temp);
 
         new weatherTask().execute();
     }
@@ -101,7 +93,7 @@ public class CuacaActivity extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
 
-            findViewById(R.id.loader).setVisibility(View.VISIBLE);
+            findViewById(R.id.spinner).setVisibility(View.VISIBLE);
             findViewById(R.id.mainContainer).setVisibility(View.GONE);
             findViewById(R.id.errorText).setVisibility(View.GONE);
         }
@@ -159,22 +151,22 @@ public class CuacaActivity extends AppCompatActivity {
                         weatherBackground == 212 || weatherBackground == 221 || weatherBackground == 230 || weatherBackground == 231 || weatherBackground == 232){
                     drawableBackground.setImageResource(R.drawable.thunderstorm);
                 }
-
-                updatedAt = jsonObj.getLong("dt");
-                updatedAtText = "Terupdate pada " + new SimpleDateFormat("dd/MM/yyyy hh:mm a", Locale.ENGLISH).format(new Date(updatedAt * 1000));
                 temp = main.getString("temp") + "°C";
                 tempMin = "Min Temp: " + main.getString("temp_min") + "°C";
                 tempMax = "Max Temp: " + main.getString("temp_max") + "°C";
-                pressure = main.getString("pressure");
-                humidity = main.getString("humidity");
+                feelsLike = main.getString("feels_like") + "°C";
+
 
                 timeZone = jsonObj.getLong("timezone")/3600; //ambil timezone dari lokasi
                 sunriseUnix = sys.getLong("sunrise");
                 sunsetUnix = sys.getLong("sunset");
+                updatedAtUnix = jsonObj.getLong("dt");
                 sunriseFormatted = new Date(sunriseUnix * 1000L);
-                sunsetFormatted = new Date(sunriseUnix * 1000L);
+                sunsetFormatted = new Date(sunsetUnix * 1000L);
+                updatedAtFormated = new Date(updatedAtUnix * 1000L);
 
-                //sunrise dan sunset unix time formatting
+
+                //timezone untuk unix time formatting
                 if (timeZone > 0){
                     timeZoneName = "GMT" + "+" + timeZone.toString();
                 }
@@ -182,8 +174,11 @@ public class CuacaActivity extends AppCompatActivity {
                 else {
                     timeZoneName = "GMT" + timeZone.toString();
                 }
+
                 sunTime = new SimpleDateFormat("hh:mm a", Locale.ENGLISH);
                 sunTime.setTimeZone(TimeZone.getTimeZone(timeZoneName));
+                updatedAtTime = new SimpleDateFormat("dd/MM/yyyy hh:mm a", Locale.ENGLISH);
+                updatedAtTime.setTimeZone(TimeZone.getTimeZone(timeZoneName));
 
                 windSpeed = wind.getString("speed") + " m/s";
                 weatherDescription = weather.getString("description");
@@ -195,7 +190,7 @@ public class CuacaActivity extends AppCompatActivity {
 
                 //isi semua view text nya
                 addressTxt.setText(address);
-                updated_atTxt.setText(updatedAtText);
+                updated_atTxt.setText(updatedAtTime.format(updatedAtFormated) + " " + "(" + timeZoneName + ")");
                 statusTxt.setText(weatherDescription.toUpperCase());
                 tempTxt.setText(temp);
                 temp_minTxt.setText(tempMin);
@@ -203,15 +198,14 @@ public class CuacaActivity extends AppCompatActivity {
                 sunriseTxt.setText(sunTime.format(sunriseFormatted));
                 sunsetTxt.setText(sunTime.format(sunsetFormatted));
                 windTxt.setText(windSpeed);
-                pressureTxt.setText(pressure);
-                humidityTxt.setText(humidity);
+                feelsLiketxt.setText(feelsLike);
 
-                findViewById(R.id.loader).setVisibility(View.GONE);
+                findViewById(R.id.spinner).setVisibility(View.GONE);
                 findViewById(R.id.mainContainer).setVisibility(View.VISIBLE);
             }
 
             catch (JSONException e) {
-                findViewById(R.id.loader).setVisibility(View.GONE);
+                findViewById(R.id.spinner).setVisibility(View.GONE);
                 findViewById(R.id.errorText).setVisibility(View.VISIBLE);
             }
         }
