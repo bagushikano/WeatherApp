@@ -89,6 +89,12 @@ public class CuacaActivity extends AppCompatActivity {
         new weatherTask().execute();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
+    }
+
     class weatherTask extends AsyncTask<String, Void, String> {
         @Override
         protected void onPreExecute() {
@@ -100,7 +106,7 @@ public class CuacaActivity extends AppCompatActivity {
 
         // ini method di jalanin setelah onPreExecute di jalanin, tapi di jalanin secara background, biasanya disini di taruh reqquest ke data API, dll
         protected String doInBackground(String... args) {
-            String url = "http://api.openweathermap.org/data/2.5/weather?id=" + id + "&units=metric&appid=" + API;
+            String url = "http://api.openweathermap.org/data/2.5/weather?id=" + id + "&units=metric&lang=id&appid=" + API;
             Request.Builder builder = new Request.Builder();
             builder.url(url);
             Request request = builder.build();
@@ -109,13 +115,13 @@ public class CuacaActivity extends AppCompatActivity {
                 return response.body().string();
             }catch (Exception e){
                 e.printStackTrace();
-                return "1";
+                return null;
             }
         }
 
         @Override
         protected void onPostExecute(String result) { // ini method di panggil kalo yang di doInBackground udah selesai di jalanin
-            if (result.equals("1")){
+            if (result == null){
                 Toast.makeText(getApplicationContext(), R.string.timeout_message, Toast.LENGTH_SHORT).show();
                 finish();
             }

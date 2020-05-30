@@ -16,12 +16,10 @@ import java.util.ArrayList;
 
 public class SearchLocationAdapter extends RecyclerView.Adapter<SearchLocationAdapter.ViewHolder> {
 
-    private Context mContext;
     private ArrayList<LocationModel.Location> lokasi;
     private Activity mActivity;
 
-    public SearchLocationAdapter(Context context, ArrayList<LocationModel.Location> lokasi, Activity mActivity) {
-        mContext = context;
+    public SearchLocationAdapter(ArrayList<LocationModel.Location> lokasi, Activity mActivity) {
         this.lokasi = lokasi;
         this.mActivity=mActivity;
     }

@@ -22,4 +22,10 @@ public class AboutActivity extends AppCompatActivity {
         about = findViewById(R.id.version_number);
         about.setText(getResources().getString(R.string.version_string) + " " + versionName);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
+    }
 }

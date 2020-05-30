@@ -46,8 +46,6 @@ public class LocationList extends RecyclerView.Adapter<LocationList.ViewHolder> 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-
-
         private AppCompatTextView txt_country;
         private AppCompatTextView txt_city;
 

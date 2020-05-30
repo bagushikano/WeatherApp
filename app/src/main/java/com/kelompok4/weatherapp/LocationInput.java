@@ -22,6 +22,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -63,11 +64,14 @@ public class LocationInput extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerviewsearch);
 
-        adapter = new SearchLocationAdapter(this, locationArray, this);
+        adapter = new SearchLocationAdapter(locationArray, this);
         linearLayoutManager = new LinearLayoutManager(this);
 
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(adapter);
+
+        assert getSupportActionBar() != null;
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         if (locationArray.isEmpty()) {
             recyclerView.setVisibility(View.GONE);
@@ -99,6 +103,12 @@ public class LocationInput extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        this.finish();
+        return super.onSupportNavigateUp();
+    }
+
     class SearchLokasi extends AsyncTask<String, Void, String> {
         private ProgressDialog dialog = new ProgressDialog(LocationInput.this, R.style.ProgressBarStyle);
         @Override
@@ -124,7 +134,7 @@ public class LocationInput extends AppCompatActivity {
                 return response.body().string();
             }
             catch (Exception e) {
-                return "1";
+                return null;
             }
         }
 
@@ -134,7 +144,7 @@ public class LocationInput extends AppCompatActivity {
                 dialog.dismiss();
             }
 
-            if (result.equals("1")){
+            if (result == null ){
                 Toast.makeText(getApplicationContext(), R.string.timeout_message, Toast.LENGTH_SHORT).show();
             }
             else{

@@ -15,6 +15,9 @@
             android:theme="@style/CuacaActivity"
             android:label="@string/title_activity_about_activity"
             android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".LocationInput"
