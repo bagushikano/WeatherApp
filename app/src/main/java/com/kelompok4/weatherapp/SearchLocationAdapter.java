@@ -1,7 +1,6 @@
 package com.kelompok4.weatherapp;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
