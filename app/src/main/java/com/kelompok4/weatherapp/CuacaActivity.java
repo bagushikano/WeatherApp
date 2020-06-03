@@ -100,7 +100,7 @@ public class CuacaActivity extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             findViewById(R.id.muter_muter).setVisibility(View.VISIBLE);
-            findViewById(R.id.mainContainer).setVisibility(View.GONE);
+            findViewById(R.id.main).setVisibility(View.GONE);
             findViewById(R.id.ups_view).setVisibility(View.GONE);
         }
 
@@ -217,7 +217,7 @@ public class CuacaActivity extends AppCompatActivity {
                     feelsLiketxt.setText(feelsLike);
 
                     findViewById(R.id.muter_muter).setVisibility(View.GONE);
-                    findViewById(R.id.mainContainer).setVisibility(View.VISIBLE);
+                    findViewById(R.id.main).setVisibility(View.VISIBLE);
                 }
 
                 catch (JSONException e) {
