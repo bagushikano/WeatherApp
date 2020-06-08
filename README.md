@@ -1,7 +1,8 @@
 ![iconapp](https://github.com/bgsw0709/WeatherApp/blob/master/github/ic_launcher.png)
 
 # Aplikasi Cuaca
-Simple. Fast. Beautiful
+> *Simple. Fast. Beautiful*
+> 
 Aplikasi cuaca adalah sebuah aplikasi ramalan cuaca berbasis Android yang menggunakan API yang di sediakan oleh OpenWeatherMap
 
 
@@ -30,5 +31,4 @@ Aplikasi cuaca di buat berbasis Android dengan menggunakan bahasa Java
  2. A. A. Bagus Wiryadika									(1805551059)
  3. Ryan Timothy Benget Daulat Butarbutar	(1805551064)
  4. Ni Luh Putu Diah Putri Maheswari				(1805551110)
-
 
