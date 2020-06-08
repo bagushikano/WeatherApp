@@ -165,6 +165,9 @@ public class LocationInput extends AppCompatActivity {
             else{
                 try {
                     JSONObject jsonObj = new JSONObject(result);
+                    if (jsonObj.getInt("cod") == 401){
+                        Toast.makeText(getApplicationContext(), R.string.timeout_message, Toast.LENGTH_SHORT).show();
+                    }
                     JSONArray list = jsonObj.getJSONArray("list");
                     if (jsonObj.getInt("count") == 0){
                         lokasiNotFound.setVisibility(View.VISIBLE);
