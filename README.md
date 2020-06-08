@@ -15,7 +15,7 @@ Aplikasi cuaca di buat berbasis Android dengan menggunakan bahasa Java
  - Android API 21 (Android 5.0 / Lolipop)
  - Your own OpenWeatherMap API Key 
 
-## Some screenshot
+## Screenshot
 ![ss1](https://github.com/bgsw0709/WeatherApp/blob/master/github/1.jpg)
 ![ss2](https://github.com/bgsw0709/WeatherApp/blob/master/github/2.jpg)
 ![ss3](https://github.com/bgsw0709/WeatherApp/blob/master/github/3.jpg)
