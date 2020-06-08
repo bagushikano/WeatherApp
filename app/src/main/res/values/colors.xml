@@ -9,4 +9,6 @@
     <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
     <color name="transparent">#52000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="more_transparent">#1A000000</color>
 </resources>

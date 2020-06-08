@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); //untuk nge set layout activity nya dengan xml activity_main
 
+
         listKosong = findViewById(R.id.empty_view);
 
         locationArray = new ArrayList<>(); //di dalem locationArray di buatin arraylist nantinya arraylist ini di tampilin

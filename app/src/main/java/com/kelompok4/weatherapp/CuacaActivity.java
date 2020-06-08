@@ -34,7 +34,7 @@ public class CuacaActivity extends AppCompatActivity {
     private String weatherDescription;
     private String countryCode;
     private String countryName;
-    private  String address;
+    private String address;
     private Locale loc;
 
     private String temp;
@@ -45,13 +45,13 @@ public class CuacaActivity extends AppCompatActivity {
 
     private Long sunriseUnix;
     private Long sunsetUnix;
-    private  String timeZoneName;
+    private String timeZoneName;
     private Date sunriseFormatted;
     private Date sunsetFormatted;
     private SimpleDateFormat sunTime;
-    private  SimpleDateFormat updatedAtTime;
+    private SimpleDateFormat updatedAtTime;
     private Long timeZone;
-    private  Date updatedAtFormated;
+    private Date updatedAtFormated;
 
     OkHttpClient client = new OkHttpClient();
 

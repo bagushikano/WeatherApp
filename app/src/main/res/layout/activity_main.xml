@@ -5,6 +5,9 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/pict"
+    android:paddingTop="?android:attr/actionBarSize"
+    android:fitsSystemWindows="true"
     tools:context="com.kelompok4.weatherapp.MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -23,8 +26,9 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:visibility="gone"
+        android:fontFamily="sans-serif-black"
         android:text="@string/list_kosong"
-        android:textColor="@color/primary_text"/>
+        android:textColor="@color/white"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_location_fab"

@@ -26,7 +26,7 @@ public class SearchLocationAdapter extends RecyclerView.Adapter<SearchLocationAd
     @Override
     public ViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.card_layout, parent, false);
+        View view = layoutInflater.inflate(R.layout.card_layout_non_transparent, parent, false);
         return new ViewHolder(view);
     }
 

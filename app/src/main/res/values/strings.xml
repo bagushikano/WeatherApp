@@ -13,10 +13,14 @@
     <string name="location_search_button">Cari</string>
     <string name="about">Tentang Aplikasi</string>
     <string name="title_activity_about_activity">Tentang Aplikasi Cuaca</string>
-    <string name="version_string">Versi</string>
+    <string name="version_string">Versi %1$s</string>
     <string name="something_wrong">Ups terjadi kesalahan</string>
     <string name="location_exist">Lokasi sudah terdapat dalam list</string>
     <string name="timeout_message">Koneksi gagal di lakukan, silahkan coba lagi nanti atau periksa koneksi internet anda</string>
+    <string name="delete_location_dialog_title">Hapus lokasi pada list</string>
+    <string name="delete_location_dialog_message">Yakin ingin menghapus %1$s dari list?</string>
+    <string name="delete_location_dialog_positive">Ya</string>
+    <string name="delete_location_dialog_negative">Tidak</string>
 
 
 </resources>

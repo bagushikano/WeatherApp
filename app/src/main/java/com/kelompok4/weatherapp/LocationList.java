@@ -19,7 +19,7 @@ public class LocationList extends RecyclerView.Adapter<LocationList.ViewHolder> 
 
     private Context mContext;
     private ArrayList<LocationModel.Location> lokasi;
-    int position;
+    private int position;
 
     public LocationList(Context context, ArrayList<LocationModel.Location> lokasi) {
         mContext = context;
@@ -71,10 +71,10 @@ public class LocationList extends RecyclerView.Adapter<LocationList.ViewHolder> 
                     position = getAdapterPosition();
                     LocationModel.Location modelLokasi = lokasi.get(position);
 
-                    new MaterialAlertDialogBuilder(mContext)
-                            .setTitle("Hapus lokasi pada list")
-                            .setMessage("Yakin ingin menghapus " + modelLokasi.getCityName() + " dari list?")
-                            .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                    new MaterialAlertDialogBuilder(mContext, R.style.AlertDialogTheme)
+                            .setTitle(R.string.delete_location_dialog_title)
+                            .setMessage(String.format(mContext.getResources().getString(R.string.delete_location_dialog_message) , modelLokasi.getCityName()))
+                            .setPositiveButton(R.string.delete_location_dialog_positive, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     dialogInterface.dismiss();
@@ -83,7 +83,7 @@ public class LocationList extends RecyclerView.Adapter<LocationList.ViewHolder> 
                                     notifyItemRangeChanged(position, lokasi.size());
                                 }
                             })
-                            .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                            .setNegativeButton(R.string.delete_location_dialog_negative, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     dialogInterface.dismiss();

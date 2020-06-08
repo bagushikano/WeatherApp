@@ -5,7 +5,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/location_input"
-    tools:context="com.kelompok4.weatherapp.LocationInput">
+    android:clickable="true"
+    android:focusableInTouchMode="true"
+    tools:context="com.kelompok4.weatherapp.LocationInput"
+    android:focusable="true">
 
     <TextView
         android:id="@+id/search_kosong"
@@ -27,13 +30,14 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/search_form"
+        app:startIconDrawable="@drawable/ic_search_icon"
+        app:startIconTint="@color/icon_tint"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="5dp"
-
         android:layout_marginBottom="8dp"
         android:hint="@string/location_search_hint"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
