@@ -22,9 +22,10 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 Intent mainActivity = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(mainActivity);
+                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                 finish();
             }
-        }, 3000L);
+        }, 1000L);
     }
 
     private void hideSystemUI() {
